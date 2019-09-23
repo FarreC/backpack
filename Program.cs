@@ -32,10 +32,10 @@ namespace Backpack
                         Console.WriteLine($"Du har nu lagt till {inventory[counter]}\n");
                         counter++; // Byter till nästa element i arrayen för att kunna fortsätta lägga in något mer (detta görs inte ifall counter överstiger 5 då arrayen har inte mer än 5 element, får error och går över till catch)
                     }
-                    catch(Exception)
+                    catch(Exception e)
                     {
                         // Då ryggsäcken har en kapacitet på 5 så kan counter överstiga 5 och krasha. Istället så säger den till användaren att väskan är full
-                        Console.WriteLine("Ryggsäcken är full, du behöver rensa ryggsäcken!\n");
+                        Console.WriteLine($"Ryggsäcken är full, du behöver rensa ryggsäcken!\nFelmeddelande: {e.Message} ");
 
                     }
                     
