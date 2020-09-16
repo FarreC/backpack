@@ -16,6 +16,7 @@ namespace Backpack
 
             while(true)
             {
+                Console.Clear();
                 // Välkommnar dig till din ryggsäck och visar upp en meny med olika alternativ
                 Console.WriteLine("Välkommen till din ryggsäck!\n [1] Lägg till ett föremål\n [2] Skriv ut innehållet\n [3] Rensa innehållet\n [4] Avsluta\nVälj:");
                 string option = Console.ReadLine(); // Här matar användaren in meny valet från 1-4
@@ -28,14 +29,18 @@ namespace Backpack
                     try
                     {
                        // Lägger till något i väskan
+                       Console.Clear();
                         inventory[counter] = AddInventory(inventory[counter]);
                         Console.WriteLine($"Du har nu lagt till {inventory[counter]}\n");
                         counter++; // Byter till nästa element i arrayen för att kunna fortsätta lägga in något mer (detta görs inte ifall counter överstiger 5 då arrayen har inte mer än 5 element, får error och går över till catch)
+                        Console.ReadKey();
                     }
                     catch(Exception e)
                     {
                         // Då ryggsäcken har en kapacitet på 5 så kan counter överstiga 5 och krasha. Istället så säger den till användaren att väskan är full
+                        Console.Clear();
                         Console.WriteLine($"Ryggsäcken är full, du behöver rensa ryggsäcken!\nFelmeddelande: {e.Message} ");
+                        Console.ReadKey();
 
                     }
                     
@@ -43,14 +48,18 @@ namespace Backpack
 
                     case "2":
                        // Skriver ut väskans innehåll
+                        Console.Clear();
                         CheckInventory(inventory);
+                        Console.ReadKey();
                    
                      break;
 
                      case "3":
                         // Rensar väskans innehåll
+                        Console.Clear();
                         ClearInventory(inventory);
                         counter = 0; // Ställer om counter till 0 för att börja om på arrayen.
+                        Console.ReadKey();
                      break;
 
                      case "4":
@@ -58,7 +67,9 @@ namespace Backpack
                      
 
                      default:
+                     Console.Clear();
                      Console.WriteLine("Ogiltig inmatad siffra, försök igen!\n"); // Ifall användaren matar in något annat än 1-4 så varnas användaren.
+                     Console.ReadKey();
                      break;
                 }
             }
